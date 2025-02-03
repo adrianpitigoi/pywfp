@@ -47,7 +47,7 @@ PyWFP supports a variety of filter conditions that can be combined using logical
 | inbound/outbound | Direction of traffic                            | `inbound`, `outbound`              |
 | tcp/udp/icmp     | Protocol type                                   | `tcp`, `udp`, `icmp`               |
 | remoteaddr       | Remote IP address (supports ranges)            | `192.168.1.1`, `10.0.0.1-10.0.0.255` |
-| localaddr        | Local IP address                                | `127.0.0.1`                       |
+| localaddr        | Local IP address (supports ranges)             | `127.0.0.1`, `192.168.1.1-192.168.1.255` |
 | tcp.dstport      | TCP destination port                            | `80`, `443`                        |
 | tcp.srcport      | TCP source port                                 | `5000`, `8080`                     |
 | udp.dstport      | UDP destination port                            | `53`, `123`                        |
