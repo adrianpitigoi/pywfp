@@ -6,7 +6,6 @@ starting transactions, adding filters, and closing the engine.
 import ctypes
 import logging
 
-from loguru import logger
 from win32more.Windows.Win32.Foundation import HANDLE
 from win32more.Windows.Win32.NetworkManagement.WindowsFilteringPlatform import (
     FWPM_FILTER0,
