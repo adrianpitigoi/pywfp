@@ -4,6 +4,13 @@ on:
   push:
     branches:
       - main  # Publishes to TestPyPI on every main branch push
+    paths-ignore:
+      - 'README.md'
+      - 'docs/**'
+      - '.gitignore'
+      - 'LICENSE'
+      - '*.rst'
+      - '*.txt'
   release:
     types: [published]  # Publishes to PyPI when you create a GitHub release
 
