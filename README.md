@@ -2,6 +2,8 @@
 
 PyWFP is a Python interface for working with Windows Filtering Platform (WFP), allowing creation of network traffic filters using a similar Windivert-style syntax.
 
+> **Note:** PyWFP requires administrator privileges to run. Running without admin rights will result in a `WFPError` with code `0x00000005` (Access Denied).
+
 ## Installation
 
 ```bash
