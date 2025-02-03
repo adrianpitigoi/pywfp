@@ -16,19 +16,43 @@ pip install pywfp
 from pywfp import PyWFP
 from pprint import pprint
 
+
 def main():
+    # Create PyWFP instance
     pywfp = PyWFP()
+
+    # Example filter string
     filter_string = (
-        "outbound and tcp and remoteaddr == 192.168.1.3-192.168.1.4 "
-        "and tcp.dstport == 8123 and action == allow"
+        "outbound and tcp and remoteaddr == 192.168.1.3-192.168.1.4 " "and tcp.dstport == 8123 and action == allow"
     )
 
-    with pywfp.session():  # Context manager for session handling
-        pywfp.add_filter(filter_string, filter_name="Example Filter", weight=1000)
-        
-        # List and inspect filters
-        if filter := pywfp.get_filter("Example Filter"):
-            pprint(filter)
+    try:
+        # Use context manager to handle WFP engine session
+        with pywfp.session():
+            # Add the filter
+            filter_name = "PyWFP Allow Filter"
+            pywfp.add_filter(filter_string, filter_name=filter_name, weight=1000)
+
+            # List existing filters
+            filters = pywfp.list_filters()
+            print(f"Found {len(filters)} WFP filters")
+
+            # Find our specific filter
+            if filter := pywfp.get_filter(filter_name):
+                print(f"Found filter: {filter}")
+                pprint(filter)
+
+            # Keep the filter active until interrupted
+            print("Press Ctrl+C to exit and remove the filter")
+            try:
+                while True:
+                    input()
+            except KeyboardInterrupt:
+                print("Received Ctrl+C, cleaning up")
+
+    except Exception as e:
+        print(f"Error: {e}")
+
 
 if __name__ == "__main__":
     main()
@@ -70,7 +94,7 @@ Combine conditions using AND:
 
 ## Filter Management
 ```python
-# You can set the weight of the filter to determine its priority
+# You can set the weight of the filter to determine its priority. If weight is not specified, the highest priority will be given.
 pywfp.add_filter("inbound and udp", filter_name="Block UDP", weight=500)
 
 # List all filters
