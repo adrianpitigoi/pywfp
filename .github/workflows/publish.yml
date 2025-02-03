@@ -1,4 +1,4 @@
-name: Publish to PyPI
+name: Publish to TestPyPI
 
 on:
   release:
@@ -19,8 +19,10 @@ jobs:
         pip install build twine
     - name: Build package
       run: python -m build
-    - name: Publish package
+    - name: Publish package to TestPyPI
       env:
         TWINE_USERNAME: __token__
-        TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-      run: twine upload dist/* 
+        TWINE_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
+        TWINE_REPOSITORY_URL: https://test.pypi.org/legacy/
+      run: |
+        twine upload --repository testpypi dist/*
