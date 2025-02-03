@@ -23,14 +23,14 @@ def main():
 
     # Example filter string
     filter_string = (
-        "outbound and tcp and remoteaddr == 192.168.1.3-192.168.1.4 " "and tcp.dstport == 8123 and action == allow"
+        "outbound and tcp and remoteaddr == 192.168.1.3-192.168.1.4 " "and tcp.dstport == 8123 and action == block"
     )
 
     try:
         # Use context manager to handle WFP engine session
         with pywfp.session():
             # Add the filter
-            filter_name = "PyWFP Allow Filter"
+            filter_name = "PyWFP Block Filter"
             pywfp.add_filter(filter_string, filter_name=filter_name, weight=1000)
 
             # List existing filters
