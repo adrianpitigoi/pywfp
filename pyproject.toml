@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pywfp"
-version = "0.1.3"
+version = "0.1.4"
 description = "A Python package for Windows Filtering Platform management"
 authors = [
     {name = "Adrian Pitigoi", email = "adrian.pitigoi90@gmail.com"},
