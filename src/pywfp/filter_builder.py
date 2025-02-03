@@ -25,7 +25,7 @@ def build_wfp_filter_from_expression(
         expr = FilterParser.parse(filter_string)
     except ValueError as e:
         logger.error(f"Error parsing filter: {e}")
-        return
+        raise ValueError(f"Failed to parse filter: {e}")
 
     logger.info("Building WFP filter from expression")
     try:

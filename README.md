@@ -1,5 +1,9 @@
 # PyWFP
 
+[![Tests](https://github.com/adrianpitigoi/pywfp/actions/workflows/tests.yml/badge.svg)](https://github.com/adrianpitigoi/pywfp/actions/workflows/tests.yml)
+[![codecov](https://codecov.io/gh/adrianpitigoi/pywfp/branch/main/graph/badge.svg)](https://codecov.io/gh/adrianpitigoi/pywfp)
+[![PyPI version](https://badge.fury.io/py/pywfp.svg)](https://badge.fury.io/py/pywfp)
+
 PyWFP is a Python interface for working with Windows Filtering Platform (WFP), allowing creation of network traffic filters using a similar Windivert-style syntax.
 
 > **Note:** PyWFP requires administrator privileges to run. Running without admin rights will result in a `WFPError` with code `0x00000005` (Access Denied).
@@ -102,4 +106,24 @@ for filter in pywfp.list_filters():
     print(filter["name"])
 )
 # Maybe more to be added here
+```
+## Testing
+
+### Unit Tests
+Run unit tests with:
+```bash
+pytest -m "not integration"
+```
+
+### Integration Tests
+Integration tests require:
+
+- Windows OS
+- Administrator privileges
+- Local network access
+
+To run integration tests locally:
+```bash
+# Open an administrator command prompt
+pytest -m integration
 ```
